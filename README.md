@@ -32,7 +32,7 @@ Este módulo busca hacerte la vida más fácil si estás desarrollando tu propio
 Para instalar el módulo:
 
 ```bash
-npm install StepLauncher-Core
+npm i steplauncher-core
 ```
 
 Asegúrate de tener **Node.js 18 o superior**.
@@ -42,7 +42,7 @@ Asegúrate de tener **Node.js 18 o superior**.
 ## 🚀 ¿Cómo descargar Minecraft?
 
 ```js
-const { downloadMinecraft } = require('StepLauncher-Core');
+const { downloadMinecraft } = require('steplauncher-core');
 
 downloadMinecraft({
   root: '.StepLauncher',
@@ -104,7 +104,7 @@ window.ElectronAPI.onProgressUpdate((info) => {
 Una vez descargado Minecraft, podés lanzarlo así:
 
 ```js
-const { launchMinecraft } = require('StepLauncher-Core');
+const { launchMinecraft } = require('steplauncher-core');
 
 launchMinecraft({
   user: {
@@ -156,7 +156,7 @@ launchMinecraft({
 ### Backend (`main.js` o `main.ts`):
 
 ```js
-const { downloadMinecraft } = require('StepLauncher-Core');
+const { downloadMinecraft } = require('steplauncher-core');
 
 ipcMain.handle('installMinecraft', async (_event, version) => {
   await downloadMinecraft({
