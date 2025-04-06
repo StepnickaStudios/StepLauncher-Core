@@ -232,8 +232,7 @@ launchMinecraft({
 ## 👨‍💻 Autor
 
 Hecho con ❤️ por **Santiago Stepnicka**  
-📦 [StepnickaStudios](https://github.com/StepnickaStudios)  
-🚀 Proyecto oficial de [StepLauncher](https://github.com/StepnickaStudios/StepLauncher)
+📦 [StepnickaStudios](https://github.com/StepnickaStudios)
 
 ---
 
@@ -248,5 +247,3 @@ Puedes usarlo libremente, incluso en proyectos comerciales, siempre que respetes
 
 ¡Apoyá el proyecto con una estrella en GitHub o compartilo con otros devs de launchers! 🚀  
 ```
-
----
