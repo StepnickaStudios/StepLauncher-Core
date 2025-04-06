@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StepLauncher Installer</title>
+  <style>
+    * {
+      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #121212;
+      color: #f0f0f0;
+      padding: 30px;
+      margin: 0;
+    }
+
+    h3 {
+      margin-top: 30px;
+      color: #00ffc3;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      margin-right: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 200px;
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffc3;
+      color: #121212;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #00d6a8;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+  </style>
+  <style>
+    #progress-container {
+      width: 100%;
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+      box-shadow: 0 0 8px #00000060;
+    }
+  
+    #progress-bar {
+      height: 24px;
+      width: 0%;
+      background: linear-gradient(90deg, #00ff88, #00bfff);
+      text-align: center;
+      color: #000;
+      font-weight: bold;
+      transition: width 0.3s ease;
+    }
+  
+    #progress-text {
+      margin-top: 6px;
+      font-family: monospace;
+      color: #ccc;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <div class="section">
+    <h3>📦 Instalar Minecraft (Vanilla)</h3>
+    <input type="text" id="VANILLAInput" placeholder="Ej: 1.20.1">
+    <button id="installBtn">Instalar Versión</button>
+
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <p id="progress-text">Esperando instrucciones...</p>
+  </div>
+
+  <div class="section">
+    <h3>🎮 Jugar una versión</h3>
+    <input type="text" id="versionInput" placeholder="Ej: 1.20.1">
+    <button id="playBtn">Abrir</button>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const installBtn = document.getElementById('installBtn');
+      const playBtn = document.getElementById('playBtn');
+      const barra = document.getElementById('progress-bar');
+      const texto = document.getElementById('progress-text');
+
+      window.ElectronAPI.onProgressUpdate((info) => {
+        console.log("📡 Progreso desde backend:", info);
+        const { percentage = 0, message = "", step = "" } = info;
+
+        if (barra && typeof percentage === 'number') {
+            barra.style.width = `${percentage}%`;
+            barra.textContent = `${percentage.toFixed(0)}%`;
+        }
+
+        if (texto) {
+            if (message.toLowerCase().includes("descargado")) {
+            texto.textContent = `📥 ${message}`;
+            } else {
+            texto.textContent = `⚙️ Descargando ${step || "archivos"} (${percentage.toFixed(0)}%)`;
+            }
+        }
+
+        if (percentage === 100 && step === "Descarga de assets finalizada") {
+            texto.textContent = "✅ Instalación completa";
+            barra.style.width = "100%";
+            barra.textContent = "100%";
+
+            setTimeout(() => {
+            alert("🎉 Versión instalada correctamente");
+            barra.style.width = "0%";
+            barra.textContent = "";
+            texto.textContent = "Esperando instrucciones...";
+            }, 800);
+        }
+        });
+
+      installBtn.addEventListener('click', () => {
+        const version = document.getElementById('VANILLAInput').value;
+        if (version) {
+          barra.style.width = "0%";
+          texto.textContent = "⏳ Iniciando instalación...";
+
+          window.ElectronAPI.installMinecraft(version, "vanilla").catch(err => {
+            alert("❌ Error al instalar: " + err);
+            texto.textContent = "❌ Error en la instalación";
+          });
+        } else {
+          alert("⚠️ Ingresa una versión válida para instalar");
+        }
+      });
+
+      playBtn.addEventListener('click', () => {
+        const version = document.getElementById('versionInput').value;
+        if (version) {
+          window.ElectronAPI.executeGame(version, "vanilla").then(() => {
+            alert("🚀 Lanzando Minecraft " + version);
+          }).catch(err => {
+            alert("❌ Error al ejecutar: " + err);
+          });
+        } else {
+          alert("⚠️ Ingresa una versión válida para jugar");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
