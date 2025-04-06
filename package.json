@@ -1,42 +1,22 @@
 {
-  "name": "steplauncher",
+  "name": "steplauncher-core",
   "version": "1.0.0",
-  "description": "StepLauncher por StepnickaStudios",
+  "description": "Librería para descargar y ejecutar Minecraft desde Node.js o Electron. Usada por StepLauncher.",
   "main": "index.js",
-  "scripts": {
-    "start": "electron .",
-    "build": "electron-builder",
-    "package": "electron-packager . StepLauncher --platform=win32 --arch=x64 --out=dist --overwrite --win32metadata.ProductName=StepLauncher --executable-name=StepLauncher --asar=false --no-prune --version-string.CompanyName=StepnickaStudios --version-string.ProductName=StepLauncher --app-version=1.0.0 --ignore=\"dist|node_modules/\\.cache\" --electron-version=28.2.3 --win32metadata.InternalName=StepLauncher --win32metadata.FileDescription=\"Launcher de Minecraft hecho por Santiago\" --no-windows-hide --extra-resource=SDK"
+  "scripts":{
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/StepnickaStudios/StepLauncher-Core/"
   },
   "keywords": [
     "minecraft",
     "launcher",
+    "nodejs",
     "electron",
-    "steplauncher"
+    "stepnickastudios"
   ],
   "author": "Santiago Stepnicka",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "electron": "35.1.4",
-    "electron-builder": "^26.0.12",
-    "electron-packager": "^17.1.2"
-  },
-  "dependencies": {
-    "cli-progress": "^3.12.0",
-    "adlauncher-core": "^2.3.0",
-    "adm-zip": "^0.5.16"
-  },
-  "build": {
-    "appId": "com.stepnickastudios.steplauncher",
-    "productName": "StepLauncher",
-    "files": [
-      "**/*",
-      "SDK/**/*"
-    ],
-    "asar": false,
-    "win": {
-      "target": "nsis"
-    }
-  }
+  "license": "MIT"
 }
