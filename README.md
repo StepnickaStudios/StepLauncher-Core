@@ -32,7 +32,7 @@ Este módulo busca hacerte la vida más fácil si estás desarrollando tu propio
 Para instalar el módulo:
 
 ```bash
-npm install StepLauncher-Core
+npm i steplauncher-core
 ```
 
 Asegúrate de tener **Node.js 18 o superior**.
@@ -119,6 +119,7 @@ launchMinecraft({
     max: '4G',
   },
   java: 'C:/Program Files/Java/jdk-17/bin/java.exe', // [OPCIONAL] ELIGIRA EL JAVA POR DEFECTO QUE TENGA INSTALADO EL USUARIO
+  infoGame: true // [OPCIONAL] ESTARA ACTIVADO POR  DEFECTO
 });
 ```
 
@@ -130,7 +131,7 @@ launchMinecraft({
 | `gameDirectory`  | Carpeta donde se descargó Minecraft.                                       |
 | `memory`         | Memoria mínima y máxima a asignar.                                         |
 | `java`           | Ruta del ejecutable de Java. Si no se especifica, se usará el del sistema. |
-| `infoGame`       | Si está en true, muestra logs en consola durante la ejecución del juego    |
+| `infoGame`       | Muestra logs del juego. `true` por defecto.                                |  
 
 ---
 
@@ -234,7 +235,7 @@ launchMinecraft({
 
 Hecho con ❤️ por **Santiago Stepnicka**  
 📦 [StepnickaStudios](https://github.com/StepnickaStudios)  
-🚀 Proyecto oficial de [StepLauncher](https://github.com/StepnickaStudios/StepLauncher)
+🛠️ [NPM](https://www.npmjs.com/package/steplauncher-core)
 
 ---
 
