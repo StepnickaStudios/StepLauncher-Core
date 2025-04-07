@@ -32,7 +32,7 @@ Este módulo busca hacerte la vida más fácil si estás desarrollando tu propio
 Para instalar el módulo:
 
 ```bash
-npm i steplauncher-core
+npm install StepLauncher-Core
 ```
 
 Asegúrate de tener **Node.js 18 o superior**.
@@ -42,7 +42,7 @@ Asegúrate de tener **Node.js 18 o superior**.
 ## 🚀 ¿Cómo descargar Minecraft?
 
 ```js
-const { downloadMinecraft } = require('steplauncher-core');
+const { downloadMinecraft } = require('StepLauncher-Core');
 
 downloadMinecraft({
   root: '.StepLauncher',
@@ -104,7 +104,7 @@ window.ElectronAPI.onProgressUpdate((info) => {
 Una vez descargado Minecraft, podés lanzarlo así:
 
 ```js
-const { launchMinecraft } = require('steplauncher-core');
+const { launchMinecraft } = require('StepLauncher-Core');
 
 launchMinecraft({
   user: {
@@ -130,10 +130,11 @@ launchMinecraft({
 | `gameDirectory`  | Carpeta donde se descargó Minecraft.                                       |
 | `memory`         | Memoria mínima y máxima a asignar.                                         |
 | `java`           | Ruta del ejecutable de Java. Si no se especifica, se usará el del sistema. |
+| `infoGame`       | Si está en true, muestra logs en consola durante la ejecución del juego    |
 
 ---
 
-## 🧪 Soporte para Forge, NeoForge y más
+## 🧪 Soporte para Forge, NeoForge, Fabric, Optifine, Vanilla Minecraft
 
 Este módulo **soporta versiones modificadas**, siempre que ya hayan sido instaladas:
 
@@ -156,7 +157,7 @@ launchMinecraft({
 ### Backend (`main.js` o `main.ts`):
 
 ```js
-const { downloadMinecraft } = require('steplauncher-core');
+const { downloadMinecraft } = require('StepLauncher-Core');
 
 ipcMain.handle('installMinecraft', async (_event, version) => {
   await downloadMinecraft({
@@ -232,7 +233,8 @@ launchMinecraft({
 ## 👨‍💻 Autor
 
 Hecho con ❤️ por **Santiago Stepnicka**  
-📦 [StepnickaStudios](https://github.com/StepnickaStudios)
+📦 [StepnickaStudios](https://github.com/StepnickaStudios)  
+🚀 Proyecto oficial de [StepLauncher](https://github.com/StepnickaStudios/StepLauncher)
 
 ---
 
