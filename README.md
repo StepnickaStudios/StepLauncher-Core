@@ -530,7 +530,7 @@ module.exports = { downloadMinecraft, uninstallVersion ,launchMinecraft, version
 
 Hecho con ❤️ por **Santiago Stepnicka**  
 📦 [StepnickaStudios](https://github.com/StepnickaStudios)  
-🛠️ [StepnickaStudios](https://www.npmjs.com/~stepnickastudio)
+🛠️ [NPM](https://www.npmjs.com/~stepnickastudio)
 
 ---
 
